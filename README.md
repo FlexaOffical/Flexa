@@ -3,6 +3,6 @@
 # Flexa V2.0
 
 > [!NOTE]
-> Flexa V2.0 It will be released soon © Copyright 2024 Pterify.
+> Flexa V2.0 It will be released soon © Copyright 2024 ayadshkur100221.
 >
 * [Click here to V1.0](https://github.com/Pterify/FlexaCP)
