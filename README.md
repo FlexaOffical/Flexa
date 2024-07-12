@@ -22,7 +22,7 @@ Ubuntu 22.04 - 20.04 ✅
   - reopen a new ssh session (eg restart putty)
   - `nvm install 16`
   - check the node version with `node -v`
-  - Clone the repo: `https://github.com/FlexaCP/Flexa.git /var/www/flexa`
+  - Clone the repo: `git clone https://github.com/FlexaCP/Flexa.git /var/www/flexa`
   - Run `cd /var/www/flexa && npm i`
   - To run Flexa, use `node .`
   - To Running in background, use `npm install pm2 -g` after that `cd /var/www/flexa && pm2 start node .`
