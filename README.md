@@ -1,6 +1,6 @@
 ![alt text](https://raw.githubusercontent.com/FlexaCP/Flexa/main/flexa-v2.png)
 
-# Flexa V2.0
+# [Flexa V2.0](http://flexacp.uk.to)
 
 Flexa is a high-performance client area for the Pterodactyl Panel. It allows your users to create, edit and delete servers, and also earn coins which can be used to upgrade their servers.
 
