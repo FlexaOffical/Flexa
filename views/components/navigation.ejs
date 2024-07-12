@@ -1,0 +1,318 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="shortcut icon" href="/assets/favicon.png" type="favicon">
+</head>
+
+<body>
+
+  <button id="sidebar-toggle" aria-controls="default-sidebar" type="button"
+    class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+    <span class="sr-only">Open sidebar</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path clip-rule="evenodd" fill-rule="evenodd"
+        d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+      </path>
+    </svg>
+  </button>
+
+  <script>
+    document.getElementById('sidebar-toggle').addEventListener('click', function (event) {
+      var sidebar = document.getElementById('default-sidebar');
+      sidebar.classList.toggle('-translate-x-full');
+      event.stopPropagation();
+    });
+
+    document.addEventListener('click', function (event) {
+      var sidebar = document.getElementById('default-sidebar');
+      var toggleButton = document.getElementById('sidebar-toggle');
+
+      // Check if the click was outside the sidebar and the toggle button
+      if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
+        if (!sidebar.classList.contains('-translate-x-full')) {
+          sidebar.classList.add('-translate-x-full');
+        }
+      }
+    });
+  </script>
+
+  <aside id="default-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidenav">
+    <div class="overflow-y-auto py-5 px-3 h-full bg-white border-r border-gray-200 text-[#1f1f1f]">
+
+      <a href="/" class="flex mr-4 justify-center items-cente">
+        <img src="/assets/favicon.png" class="rounded-lg h-8 me-3" />
+        <span class="self-center text-2xl font-semibold whitespace-nowrap">
+          <%= settings.name %>
+        </span>
+      </a>
+
+      <br>
+
+      <div class="flex-shrink-0 flex shadow bg-gray-100 rounded-md 
+   <% if (settings.api.client.accountSwitcher !== true) { %>
+     p-4
+   <% } else { %>
+     p-2
+   <% } %> ">
+        <% if (settings.api.client.accountSwitcher !==true) { %>
+          <% } else { %>
+            <% /* v2 of account view with built in account switcher */ %>
+              <a href="../security"
+                class="transition duration-500 flex-shrink-0 w-full group block transition hover:bg-gray-200 hover:shadow-none rounded-md p-2">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <div>
+                      <img class="inline-block h-9 w-9 rounded-xl"
+                        src="https://cdn.discordapp.com/avatars/<%= userinfo.id %>/<%= userinfo.avatar %>?size=256"
+                        alt="">
+                    </div>
+                    <div class="ml-3">
+                      <p class="text-sm font-semibold text-[#1f1f1f]">
+                        <%= userinfo.global_name %>
+                      </p>
+                      <p class="text-sm font-semibold text-[#1f1f1f]">
+                        <%= coins.toFixed(2) %> coin<%= coins==1 ? "" : "s" %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <% } %>
+
+      </div>
+
+      <br>
+
+      <div class="pb-2 flex flex-row justify-center text-center items-center">
+
+        <a href="../servers/new" type="button"
+          class="w-full text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-3 text-center">
+          Create a server
+        </a>
+
+      </div>
+
+      <ul class="text-[#1f1f1f] space-y-2">
+        <li>
+          <a href="../dashboard"
+            class="transition ease-in-out hover:translate-x-1 hover:scale-12 duration-200 flex items-center p-2 text-lg font-normal rounded-lg hover:bg-gray-200 group">
+            <i style="font-size: 24px;" class='bx bx-home'></i><span class="ml-3">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="../servers"
+            class="transition ease-in-out hover:translate-x-1 hover:scale-12 duration-200 flex items-center p-2 text-lg font-normal rounded-lg hover:bg-gray-200 group">
+            <i style="font-size: 24px;" class='bx bx-server'></i><span class="ml-3">Servers</span>
+          </a>
+        </li>
+        <li>
+          <a href="../store"
+            class="transition ease-in-out hover:translate-x-1 hover:scale-12 duration-200 flex items-center p-2 text-lg font-normal rounded-lg  hover:bg-gray-200 group">
+            <i style="font-size: 24px;" class='bx bx-cart'></i><span class="ml-3">Shop</span>
+          </a>
+        </li>
+        <li>
+          <a href="../afk"
+            class="transition ease-in-out hover:translate-x-1 hover:scale-12 duration-200 flex items-center p-2 text-lg font-normal rounded-lg hover:bg-gray-200 group">
+            <i style="font-size: 24px;" class='bx bx-coin'></i><span class="ml-3">Earn</span>
+          </a>
+        </li>
+        <li>
+          <a href="../security"
+            class="transition ease-in-out hover:translate-x-1 hover:scale-12 duration-200 flex items-center p-2 text-lg font-normal rounded-lg hover:bg-gray-200 group">
+            <i style="font-size: 24px;" class='bx bx-key'></i><span class="ml-3">Panel</span>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="<%= settings.support %>"
+            class="transition ease-in-out hover:translate-x-1 hover:scale-12 duration-200 flex items-center p-2 text-lg font-normal rounded-lg  hover:bg-gray-200 group">
+            <i style="font-size: 24px;" class='bx bx-support'></i><span class="ml-3">Support</span>
+          </a>
+        </li>
+        <li>
+          <a href="../logout"
+            class="transition ease-in-out hover:translate-x-1 hover:scale-12 duration-200 flex items-center p-2 text-lg font-normal rounded-lg  hover:bg-gray-200 group">
+            <i style="font-size: 24px;" class='bx bx-exit'></i><span class="ml-3">Logout</span>
+          </a>
+        </li>
+      </ul>
+      </li>
+      </ul>
+      <%- include('../components/style') %>
+  </aside>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentPageUrl = window.location.href;
+
+      // Get all navigation links
+      var navLinks = document.querySelectorAll('.nav-link');
+
+      // Loop through each navigation link
+      navLinks.forEach(function (link) {
+        // Get the href attribute of the link
+        var linkUrl = link.getAttribute('href');
+
+        // Check if the current page URL contains the link URL
+        if (currentPageUrl.includes(linkUrl.replace('../', '/'))) {
+          // Remove all existing classes
+          link.className = 'nav-link';
+
+          // Add the specified classes
+          link.classList.add(
+            'transition',
+            'text-gray-900',
+            'bg-gray-200',
+            'backdrop-blur',
+            'group',
+            'flex',
+            'items-center',
+            'px-4',
+            'py-2',
+            'text-sm',
+            'font-semibold',
+            'rounded-xl'
+          );
+        }
+      });
+    });
+  </script>
+  <script>
+    var options = {
+      classname: 'loadingbar',
+      id: 'loadingbar'
+    };
+    var nanobar = new Nanobar(options);
+    // Show the spinner with a smooth transition
+    var spinner = document.getElementById('spinner');
+    spinner.style.opacity = '1';
+    // Simulate a slower loading progress
+    function simulateLoading() {
+      nanobar.go(10); // Change this value to control the loading speed
+      setTimeout(function () {
+        nanobar.go(50);
+      }, 190); // Delay the progress update
+      setTimeout(function () {
+        nanobar.go(100);
+        // Hide the spinner with a smooth transition
+        spinner.style.opacity = '0';
+      }, 400); // Another delay
+    }
+    simulateLoading();
+  </script>
+  <style>
+    .loadingbar .bar {
+      background: #515661;
+      -webkit-box-shadow: 0px 4px 38px -15px rgba(0, 0, 0, 0.87);
+      -moz-box-shadow: 0px 4px 38px -15px rgba(0, 0, 0, 0.87);
+      box-shadow: 0px 4px 38px -15px rgba(0, 0, 0, 0.87);
+      height: 1.85px;
+    }
+  </style>
+  <style>
+    #skeleton-loader {
+      display: none;
+    }
+
+    #skeleton-loader.active {
+      display: block;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Get references to the skeleton loader and content elements
+      const skeletonLoader = document.getElementById("skeleton-loader");
+      const content = document.getElementById("content");
+
+      // Function to show the skeleton loader and hide the content
+      function showSkeletonLoader() {
+        skeletonLoader.classList.add("active");
+        content.style.display = "none";
+      }
+
+      // Function to hide the skeleton loader and show the content
+      function hideSkeletonLoader() {
+        skeletonLoader.classList.remove("active");
+        content.style.display = "block";
+      }
+
+      // Show the skeleton loader immediately (initial state)
+      showSkeletonLoader();
+      setTimeout(hideSkeletonLoader, 250);
+    });
+  </script>
+  <style>
+    .hidden {
+      display: none;
+    }
+
+    .modal {
+      display: none;
+      /* Initially hide the modal */
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .newAccountModal {
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .newAccountContent {
+      transition: opacity 0.2s ease-in-out;
+      /* Added transition for opacity */
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 48px;
+      width: 30%;
+      border-radius: 24px;
+    }
+
+    .modal-content {
+      opacity: 0;
+      /* Initially hide the modal content */
+      transition: opacity 0.2s ease-in-out;
+      /* Added transition for opacity */
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 48px;
+      width: 30%;
+      border-radius: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 80%;
+      }
+    }
+
+    .modal.show {
+      display: block;
+      /* Show the modal when it has the 'show' class */
+    }
+
+    .modal-content.visible {
+      opacity: 1;
+      /* Show the modal content when it has the 'visible' class */
+    }
+  </style>
+</body>

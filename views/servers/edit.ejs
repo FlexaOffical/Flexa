@@ -1,0 +1,105 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= settings.name %>
+  </title>
+</head>
+
+<body class="bg-[#efefef] rounded-lg shadow sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 antialiased"
+  style="font-family: 'Inter', sans-serif;">
+  <div>
+    <%- include('../components/navigation') %>
+      <div class="md:pl-52 flex flex-col flex-1">
+        <main class="flex-1 pb-32">
+          <div class="py-6">
+            <div class="max-w-7xl pt-8 mx-auto px-4 sm:px-6 md:px-8">
+              <div class=" rounded-lg text-darker text-sm">
+                <% let ram=0; let disk=0; let cpu=0; let servers=pterodactyl.relationships.servers.data.length; for (let
+                  i=0, len=pterodactyl.relationships.servers.data.length; i < len; i++) { ram=ram + (typeof
+                  pterodactyl.relationships.servers.data[i].attributes.limits.memory=="number" ?
+                  pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0); disk=disk + (typeof
+                  pterodactyl.relationships.servers.data[i].attributes.limits.disk=="number" ?
+                  pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0); cpu=cpu + (typeof
+                  pterodactyl.relationships.servers.data[i].attributes.limits.cpu=="number" ?
+                  pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0); } %>
+                  <% if (req.query.id) { %>
+                    <% if (pterodactyl.relationships.servers.data.filter(name=> name.attributes.id ==
+                      req.query.id).length == 1) {
+                      let serverinfo = pterodactyl.relationships.servers.data.filter(name => name.attributes.id ==
+                      req.query.id)[0];
+                      let attemptegg = null;
+                      let attemptname = null;
+                      for (let [name, value] of Object.entries(settings.api.client.eggs)) {
+                      if (settings.api.client.eggs[name].info.egg == serverinfo.attributes.egg) {
+                      attemptegg = settings.api.client.eggs[name];
+                      attemptname = name;
+                      };
+                      };
+                      let egginfo = attemptegg ? attemptegg.display : "???";
+                      %>
+                      <div class="rounded-3xl">
+                        <div class="grid grid-cols-3 gap-6 flex">
+                          <div class="col-span-3 sm:col-span-2">
+                            <label for="company-website" class="block mb-2 text-sm font-medium text-gray-900 ">RAM
+                              (GB)</label>
+                            <div class="mt-1 flex">
+                              <input type="text" name="company-website" id="ram"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                value="<%= serverinfo.attributes.limits.memory/1024 %>">
+                            </div>
+                          </div>
+                        </div><br>
+
+                        <div class="grid grid-cols-3 gap-6">
+                          <div class="col-span-3 sm:col-span-2">
+                            <label for="company-website" class="block mb-2 text-sm font-medium text-gray-900 ">CPU
+                              (Core)</label>
+                            <div class="mt-1 flex">
+                              <input type="text" name="company-website" id="cpu"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                value="<%= serverinfo.attributes.limits.cpu/100 %>">
+                            </div>
+                          </div>
+                        </div><br>
+
+                        <div class="grid grid-cols-3 gap-6">
+                          <div class="col-span-3 sm:col-span-2">
+                            <label for="company-website" class="block mb-2 text-sm font-medium text-gray-900">Disk
+                              (GB)</label>
+                            <div class="mt-1 flex">
+                              <input type="text" name="company-website" id="disk"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                value="<%= serverinfo.attributes.limits.disk/1024 %>">
+                            </div>
+                          </div>
+                        </div><br><br>
+                        <button onclick="submitForm()"
+                          class="transition inline-flex items-center text-[#1f1f1f] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-12 py-3 text-xs font-light text-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f6212]">
+                          Apply Changes
+                        </button>
+                        <%- include('../components/buttons/primary.ejs', { href: '../delete?id=' + req.query.id,
+                          text: 'Delete Server' }) %>
+                      </div>
+                      <script>
+                        async function submitForm() {
+                          let ram = encodeURIComponent(document.getElementById("ram").value);
+                          let disk = encodeURIComponent(document.getElementById("disk").value);
+                          let cpu = encodeURIComponent(document.getElementById("cpu").value);
+                          document.location.href = `/modify?id=<%= req.query.id %>&ram=${ram * 1024}&disk=${disk * 1024}&cpu=${cpu * 100}`;
+                        };
+                      </script>
+                      <% } else { %>
+                        <p class="text-gray-600">Could not find server with the provided ID.</p>
+                        <% } %>
+                          <% } else { %>
+                            <p class="text-gray-600">Missing server ID.</p>
+                            <% } %>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+  </div>
+  <%- include('../components/style') %>
+</body>

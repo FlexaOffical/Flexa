@@ -1,0 +1,219 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= settings.name %>
+  </title>
+</head>
+
+<body class="bg-[#efefef] rounded-lg shadow sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 antialiased"
+  style="font-family: 'Inter', sans-serif;">
+  <div>
+    <%- include('../components/navigation') %>
+      <div class="md:pl-64 flex flex-col flex-1">
+        <main class="flex-1 pb-32">
+          <div class="py-6">
+            <div class="min-w-0 flex-1">
+              <div class="flex">
+                <div class="relative">
+                  <div class="bg-blue-700 rounded-xl h-11 w-11 text-center flex text-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="w-5 h-5 mt-3 ml-3">
+                      <path fill-rule="evenodd"
+                        d="M14 7h-4v3a1 1 0 0 1-2 0V7H6a1 1 0 0 0-.997.923l-.917 11.924A2 2 0 0 0 6.08 22h11.84a2 2 0 0 0 1.994-2.153l-.917-11.924A1 1 0 0 0 18 7h-2v3a1 1 0 1 1-2 0V7Zm-2-3a2 2 0 0 0-2 2v1H8V6a4 4 0 0 1 8 0v1h-2V6a2 2 0 0 0-2-2Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="relative ml-4">
+                  <h2 class="text-xl font-semibold text-gray-700 sm:truncate tracking-tight">Shop</h2>
+                  <p class="text-xs font-thin text-gray-500">Use your coins to purchase resources.</p>
+                </div>
+              </div>
+            </div>
+            <% if (req.query.err) { %>
+              <% if (req.query.err=="none" ) { %>
+                <div id="alert-3" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
+                  <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                  </svg>
+                  <span class="sr-only">purchase</span>
+                  <div class="ms-3 text-sm font-medium">
+                    Resources purchased
+                  </div>
+                  <a href="../store"
+                    class="ms-auto -mx-1.5 -my-1.5focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8">
+                    <button type="button"
+                      class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8"
+                      data-dismiss-target="#alert-3" aria-label="Close">
+                      <span class="sr-only">Close</span>
+                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                      </svg>
+                    </button>
+                  </a>
+                </div>
+                <% } else { %>
+                  <div id="alert-2" class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50" role="alert">
+                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">error</span>
+                    <div class="ms-3 text-sm font-medium">
+                      Error code: CANNOTAFFORD
+                    </div>
+                    <a href="../store"
+                      class="ms-auto -mx-1.5 -my-1.5focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8">
+                      <button type="button"
+                        class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 14 14">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                      </button>
+                    </a>
+                  </div>
+                  <% } %>
+                    <% } %>
+                      <div>
+                        <dl class="mt-8 grid grid-cols-1 rounded-lg bg-[#efefef] overflow-hidden md:grid-cols-4 gap-5">
+                          <div class="flex flex-row gap-4 flex-wrap w-full mb-2">
+                            <a href="../buy?type=ram&amount=<%= settings.api.client.coins.store.ram.per/1024 %>"
+                              class="w-full md:w-72 flex h-64 flex-col space-y-2 bg-blue-600 border-2 border-transparent hover:border-gray-700/70 rounded-3xl shadow-md transition relative">
+                              <div class="w-full h-full bg-no-repeat bg-center bg-cover rounded-3xl rounded-b-none"
+                                style="background-image: url(/assets/memory.png);">
+                                <div
+                                  class="bg-gradient-to-t from-[#202730] to-[#202730]/20 w-full h-full backdrop-blur-sm rounded-3xl">
+                                </div>
+                              </div>
+                              <div class="flex flex-col p-6">
+                                <div class="flex flex-row justify-between">
+                                  <h4 class="font-semibold text-white text-lg">1GB RAM</h4>
+                                  <p class="text-xl font-semibold text-white flex flex-row items-center gap-2">
+                                    <span class="text-[#1f1f1f] text-sm ml-3 bg-blue-700 px-4 py-1.5 rounded-full">300
+                                      coins</span>
+                                  </p>
+                                </div>
+                              </div>
+                              <div
+                                class="flex flex-row items-center gap-2 backdrop-blur-md bg-white/20 p-1 pl-2 border-2 border-white/30 pr-2 absolute right-2 rounded-full shadow-md">
+                                <p class="font-semibold text-sm text-white">One-time</p>
+                              </div>
+                            </a>
+                          </div>
+
+                          <div class="flex flex-row gap-4 flex-wrap w-full mb-2">
+                            <a href="../buy?type=cpu&amount=<%= settings.api.client.coins.store.cpu.per/100%>"
+                              class="w-full md:w-72 flex h-64 flex-col space-y-2 bg-blue-600 border-2 border-transparent hover:border-gray-700/70 rounded-3xl shadow-md transition relative">
+                              <div class="w-full h-full bg-no-repeat bg-center bg-cover rounded-3xl rounded-b-none"
+                                style="background-image: url(/assets/cpu.png);">
+                                <div
+                                  class="bg-gradient-to-t from-[#202730] to-[#202730]/20 w-full h-full backdrop-blur-sm rounded-3xl">
+                                </div>
+                              </div>
+                              <div class="flex flex-col p-6">
+                                <div class="flex flex-row justify-between">
+                                  <h4 class="font-semibold text-white text-lg">100% CPU</h4>
+                                  <p class="text-xl font-semibold text-white flex flex-row items-center gap-2">
+                                    <span class="text-[#1f1f1f] text-sm ml-3 bg-blue-700 px-4 py-1.5 rounded-full">1000
+                                      coins</span>
+                                  </p>
+                                </div>
+                              </div>
+                              <div
+                                class="flex flex-row items-center gap-2 backdrop-blur-md bg-white/20 p-1 pl-2 border-2 border-white/30 pr-2 absolute right-2 rounded-full shadow-md">
+                                <p class="font-semibold text-sm text-white">One-time</p>
+                              </div>
+                            </a>
+                          </div>
+
+                          <div class="flex flex-row gap-4 flex-wrap w-full mb-2">
+                            <a href="../buy?type=disk&amount=<%= settings.api.client.coins.store.disk.per/1024 %>"
+                              class="w-full md:w-72 flex h-64 flex-col space-y-2 bg-blue-600 border-2 border-transparent hover:border-gray-700/70 rounded-3xl shadow-md transition relative">
+                              <div class="w-full h-full bg-no-repeat bg-center bg-cover rounded-3xl rounded-b-none"
+                                style="background-image: url(/assets/disk.png);">
+                                <div
+                                  class="bg-gradient-to-t from-[#202730] to-[#202730]/20 w-full h-full backdrop-blur-sm rounded-3xl">
+                                </div>
+                              </div>
+                              <div class="flex flex-col p-6">
+                                <div class="flex flex-row justify-between">
+                                  <h4 class="font-semibold text-white text-lg">1GB Disk</h4>
+                                  <p class="text-xl font-semibold text-white flex flex-row items-center gap-2">
+                                    <span class="text-[#1f1f1f] text-sm ml-3 bg-blue-700 px-4 py-1.5 rounded-full">100
+                                      coins</span>
+                                  </p>
+                                </div>
+                              </div>
+                              <div
+                                class="flex flex-row items-center gap-2 backdrop-blur-md bg-white/20 p-1 pl-2 border-2 border-white/30 pr-2 absolute right-2 rounded-full shadow-md">
+                                <p class="font-semibold text-sm text-white">One-time</p>
+                              </div>
+                            </a>
+                          </div>
+
+                          <div class="flex flex-row gap-4 flex-wrap w-full mb-2">
+                            <a href="../buy?type=servers&amount=<%= settings.api.client.coins.store.servers.per %>"
+                              class="w-full md:w-72 flex h-64 flex-col space-y-2 bg-blue-600 border-2 border-transparent hover:border-gray-700/70 rounded-3xl shadow-md transition relative">
+                              <div class="w-full h-full bg-no-repeat bg-center bg-cover rounded-3xl rounded-b-none"
+                                style="background-image: url(/assets/server.png);">
+                                <div
+                                  class="bg-gradient-to-t from-[#202730] to-[#202730]/20 w-full h-full backdrop-blur-sm rounded-3xl">
+                                </div>
+                              </div>
+                              <div class="flex flex-col p-6">
+                                <div class="flex flex-row justify-between">
+                                  <h4 class="font-semibold text-white text-lg">Server Slot</h4>
+                                  <p class="text-xl font-semibold text-white flex flex-row items-center gap-2">
+                                    <span class="text-[#1f1f1f] text-sm ml-3 bg-blue-700 px-4 py-1.5 rounded-full">250
+                                      coins</span>
+                                  </p>
+                                </div>
+                              </div>
+                              <div
+                                class="flex flex-row items-center gap-2 backdrop-blur-md bg-white/20 p-1 pl-2 border-2 border-white/30 pr-2 absolute right-2 rounded-full shadow-md">
+                                <p class="font-semibold text-sm text-white">One-time</p>
+                              </div>
+                            </a>
+                          </div>
+
+                        </dl>
+                        <script>
+                          async function buyRAM() {
+                            let amount = encodeURIComponent(document.getElementById("ram").value);
+                            document.location.href = `/buy?type=ram&amount=${amount}`;
+                          };
+
+                          async function buyDisk() {
+                            let amount = encodeURIComponent(document.getElementById("disk").value);
+                            document.location.href = `/buy?type=disk&amount=${amount}`;
+                          };
+
+                          async function buyServers() {
+                            let amount = encodeURIComponent(document.getElementById("servers").value);
+                            document.location.href = `/buy?type=servers&amount=${amount}`;
+                          };
+
+                          async function buyCPU() {
+                            let amount = encodeURIComponent(document.getElementById("cpu").value);
+                            document.location.href = `/buy?type=cpu&amount=${amount}`;
+                          };
+                        </script>
+
+
+
+                      </div>
+          </div>
+        </main>
+      </div>
+  </div>
+  <%- include('../components/style') %>
+</body>

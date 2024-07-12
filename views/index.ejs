@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>
+    <%= settings.name %>
+  </title>
+</head>
+
+<body>
+  <section class="grid text-center h-screen items-center p-8">
+    <div>
+
+      <h2 class="text-[#1f1f1f] font-bold absolute left-0 top-0 text-4xl pt-6 pl-4">
+        <%= settings.name %>
+      </h2>
+
+      <h3
+        class="text-[#1f1f1f] block antialiased tracking-normal font-sans text-3xl font-semibold leading-snug text-blue-gray-900 mb-2">
+        👋 Welcome!
+      </h3>
+      <p
+        class="text-[#1f1f1f] block antialiased font-sans text-base font-light leading-relaxed text-inherit mb-16 text-gray-600 font-normal text-[18px]">
+        Please login or register to continue.
+      </p>
+      <form class="mx-auto max-w-[24rem] text-center">
+        <a href="../dashboard">
+          <button
+            class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-sm py-3.5 px-7 rounded-lg border border-gray-900 text-gray-900 hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] block w-full gap-3 mt-6 flex h-12 items-center justify-center gap-2"
+            type="button" data-ripple-dark="true">
+            <img src="/assets/discord.png" alt="discord" class="h-6 w-6" />
+            <!-- -->sign in with discord
+          </button>
+        </a>
+        <button
+          class="cursor-no-drop	align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-sm py-3.5 px-7 rounded-lg border border-gray-900 text-gray-900 hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] block w-full gap-3 mt-6 flex h-12 items-center justify-center gap-2"
+          type="button" data-ripple-dark="true">
+          <img src="/assets/google.png" alt="google" class="h-6 w-6" />
+          <!-- -->sign in with google
+        </button>
+      </form>
+
+      <div>
+        <p class="text-[#1f1f1f] text-center absolute inset-x-0 bottom-0 pb-8">Copyright © <%= new Date().getFullYear();
+            %>
+            <%= settings.name %> all rights reserved.</p>
+        <p class="text-[#1f1f1f] text-center absolute inset-x-0 bottom-0 pb-3">Powered by <a target="_blank"
+            href="http://flexacp.uk.to/">Flexa</a></p>
+      </div>
+
+  </section>
+
+  <script>
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+
+    document.onkeydown = function (e) {
+      if (event.keyCode == 123) {
+        return false;
+      }
+
+      if (e.ctrlKey && e.shiftKey && e.keyCode == "I".charCodeAt(0)) {
+        return false;
+      }
+
+      if (e.ctrlKey && e.shiftKey && e.keyCode == "J".charCodeAt(0)) {
+        return false;
+      }
+
+      if (e.ctrlKey && e.keyCode == "V".charCodeAt(0)) {
+        return false;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

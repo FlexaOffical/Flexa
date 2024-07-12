@@ -1,0 +1,215 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= settings.name %>
+  </title>
+</head>
+
+<body class="bg-[#efefef] rounded-lg shadow sm:items-center sm:justify-between p-4 sm:p-6 xl:p-8 antialiased"
+  style="font-family: 'Inter', sans-serif;">
+  <%- include('../components/navigation') %>
+    <div class="md:pl-64 flex flex-col flex-1">
+      <main class="flex-1 pb-32">
+        <div class="py-6">
+          <div class="min-w-0 flex-1">
+            <div class="flex">
+              <div class="relative">
+                <div class="bg-blue-700 rounded-xl h-11 w-11 text-center flex text-gray-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class="w-5 h-5 mt-3 ml-3">
+                    <path fill-rule="evenodd"
+                      d="M5 5a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7a2 2 0 0 0-2-2H5Zm9 2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H14Zm3 0a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17ZM3 17v-3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm11-2a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H14Zm3 0a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H17Z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+              <div class="relative ml-4">
+                <h2 class="text-xl font-semibold text-gray-700 sm:truncate tracking-tight">Servers</h2>
+                <p class="text-xs font-thin text-gray-500">View a list of servers on your account.</p>
+              </div>
+            </div>
+          </div>
+          <% if (req.query.err && req.query.err=="CREATED" ) { %>
+            <div id="alert-3" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
+              <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+              </svg>
+              <span class="sr-only">create</span>
+              <div class="ms-3 text-sm font-medium">
+                Server Created
+              </div>
+              <a href="../servers"
+                class="ms-auto -mx-1.5 -my-1.5focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8">
+                <button type="button"
+                  class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 "
+                  data-dismiss-target="#alert-3" aria-label="Close">
+                  <span class="sr-only">Close</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                  </svg>
+                </button>
+              </a>
+            </div>
+            <% } %>
+              <% if (req.query.err && req.query.err=="MODIFIED" ) { %>
+                <div id="alert-3" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
+                  <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                  </svg>
+                  <span class="sr-only">change</span>
+                  <div class="ms-3 text-sm font-medium">
+                    Server Resources Changed
+                  </div>
+                  <a href="../servers"
+                    class="ms-auto -mx-1.5 -my-1.5focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8">
+                    <button type="button"
+                      class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8"
+                      data-dismiss-target="#alert-3" aria-label="Close">
+                      <span class="sr-only">Close</span>
+                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                      </svg>
+                    </button>
+                  </a>
+                </div>
+                <% } %>
+                  <% if (req.query.err && req.query.err=="DELETED" ) { %>
+                    <div id="alert-2" class="flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50" role="alert">
+                      <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                      </svg>
+                      <span class="sr-only">delete</span>
+                      <div class="ms-3 text-sm font-medium">
+                        Server Deleted
+                      </div>
+                      <a href="../servers"
+                        class="ms-auto -mx-1.5 -my-1.5focus:ring-2 p-1.5 inline-flex items-center justify-center h-8 w-8">
+                        <button type="button"
+                          class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8">
+                          <span class="sr-only">Close</span>
+                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                          </svg>
+                        </button>
+                      </a>
+                    </div>
+                    <% } %>
+                      <% if (pterodactyl.relationships.servers.data.length==0) { %>
+                        <div class="text-center md:mt-[30vh]">
+                          <img class="mx-auto h-46 w-56" src="/assets/empty.png" alt="">
+                          <h3 class="mt-4 text-xl font-semibold tracking-tight text-[#1f1f1f]">You don't have any
+                            servers yet.</h3>
+                          <p class="mt-1 text-xs text-[#1f1f1f]">Create your first server</p>
+                          <div class="mt-6">
+                            <a href="../servers/new" type="button"
+                              class="transition inline-flex items-center text-[#1f1f1f] bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-12 py-3 text-xs font-light text-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f6212]">
+                              Create a server
+                            </a>
+                          </div>
+                        </div>
+                        <% } else { %>
+                          <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                            <% for (let i=0, len=pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+                              <div class="px-4 py-5 bg-gray-100 rounded-xl shadow overflow-hidden sm:p-6 lg:p-10">
+                                <div class="lg:flex lg:items-center lg:justify-between">
+                                  <div class="flex-1">
+                                    <h2
+                                      class="text-lg font-semibold text-[#1f1f1f] sm:truncate sm:text-2xl sm:tracking-tight">
+                                      <%= pterodactyl.relationships.servers.data[i].attributes.name.length> 40 ?
+                                        pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 40) + "..." :
+                                        pterodactyl.relationships.servers.data[i].attributes.name %>
+                                    </h2>
+                                    <p class="text-sm font-light text-[#1f1f1f]">
+                                      <%= pterodactyl.relationships.servers.data[i].attributes.identifier %>
+                                    </p>
+                                  </div>
+                                  <div class="mt-5 flex lg:ml-4 lg:mt-0">
+                                    <span class="sm:ml-3">
+                                      <a target="_blank" href="../panel"
+                                        class="transition inline-flex items-center text-gray-100 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-6 py-1.5 text-xs font-light text-[#1f1f1f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f6212]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                          stroke-width="1.5" stroke="currentColor"
+                                          class="-ml-0.5 mr-1.5 h-5 w-5 text-gray-100">
+                                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M6 8h.01M9 8h.01M12 8h.01M4 11h16M4 19h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
+                                        </svg>
+                                        Panel
+                                      </a>
+                                    </span>
+                                    <span class="sm:ml-3">
+                                      <a href="../edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>"
+                                        class="transition inline-flex items-center text-gray-100 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-6 py-1.5 text-xs font-light text-[#1f1f1f] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3f6212]">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                          stroke-width="1.5" stroke="currentColor"
+                                          class="-ml-0.5 mr-1.5 h-5 w-5 text-gray-100">
+                                          <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                                        </svg>
+                                        Modify
+                                      </a>
+                                    </span>
+                                  </div>
+                                </div>
+                                <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
+                                  <!-- Resources -->
+                                  <div
+                                    class="px-4 py-5 bg-gray-200 shadow transition rounded-2xl overflow-hidden sm:p-6">
+                                    <dt class="text-sm font-medium text-[#1f1f1f] truncate">CPU Cores</dt>
+                                    <dd class="mt-1 text-1xl font-light tracking-tight text-[#1f1f1f]">
+                                      <%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu/100 %>
+                                    </dd>
+                                  </div>
+                                  <div class="px-4 py-5 bg-gray-200 shadow  rounded-2xl overflow-hidden sm:p-6">
+                                    <dt class="text-sm font-medium text-[#1f1f1f] truncate">Memory</dt>
+                                    <dd class="mt-1 text-1xl font-light tracking-tight text-[#1f1f1f]">
+                                      <%= pterodactyl.relationships.servers.data[i].attributes.limits.memory/1024 %> GiB
+                                    </dd>
+                                  </div>
+                                  <div
+                                    class="px-4 py-5 bg-gray-200 shadow transition rounded-2xl overflow-hidden sm:p-6">
+                                    <dt class="text-sm font-medium text-[#1f1f1f] truncate">Storage</dt>
+                                    <dd class="mt-1 text-1xl font-light tracking-tight text-[#1f1f1f]">
+                                      <%= pterodactyl.relationships.servers.data[i].attributes.limits.disk/1024 %> GiB
+                                    </dd>
+                                  </div>
+                                </dl>
+                              </div>
+                              <% } %>
+                                <% } %>
+                                  <% if (pterodactyl.relationships.servers.data.length==1) { %>
+                                    <div
+                                      class="px-4 py-5 bg-gray-100 shadow rounded-xl overflow-hidden sm:p-6 justify-center">
+                                      <div class="flex flex-col items-center justify-center h-full">
+                                        <a href="../servers/new"
+                                          class="transition inline-flex items-center rounded-xl bg-gray-200 p-4 text-sm font-light text-blue-900 hover:text-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M12 4.5v15m7.5-7.5h-15" />
+                                          </svg>
+                                        </a>
+                                      </div>
+                                    </div>
+                                    <% } %>
+                          </dl>
+        </div>
+    </div>
+    </main>
+    </div>
+    </div>
+    <%- include('../components/style') %>
+</body>
