@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/FlexaCP/Flexa/main/flexa-v2.png)
+![alt text](https://raw.githubusercontent.com/FlexaCP/flexa.github.io/main/flexa-v2.png)
 
 # [Flexa V2.0](http://flexacp.uk.to)
 
