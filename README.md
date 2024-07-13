@@ -77,7 +77,7 @@ server {
 ### Create SSL certificates
 
  - Run `sudo apt update`
- - Run `apt install nginx && apt install certbot -y`
+ - Run `sudo apt install certbot -y`
  - Run `ufw allow 80 && ufw allow 443`
  - Run `certbot certonly -d <Your Flexa Domain>`
  - Select `1`
