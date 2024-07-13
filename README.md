@@ -18,9 +18,9 @@ All features:
 
 Ubuntu 22.04 - 20.04 ✅
 
-  - Install Nodejs 16, it's recommended to install it with nvm `sudo apt install curl && curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash`
+  - Install Nodejs 18, it's recommended to install it with nvm `sudo apt install curl && curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash`
   - reopen a new ssh session (eg restart putty)
-  - `nvm install 16`
+  - `nvm install 18`
   - check the node version with `node -v`
   - Clone the repo: `git clone https://github.com/FlexaCP/Flexa.git /var/www/flexa`
   - Run `cd /var/www/flexa && npm i`
