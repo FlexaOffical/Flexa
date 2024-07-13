@@ -36,6 +36,7 @@ Windows ✅
 
 ## NGINX reverse proxy
 
+ - First Install Nginx `sudo apt install nginx`
  - Run `nano /etc/nginx/sites-enabled/default`
  - Remove Everything and
  - Paste the configuration at the bottom of this and replace with the IP of the pterodactyl server including the port and with the domain you want your dashboard to be hosted on
