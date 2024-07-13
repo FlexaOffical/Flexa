@@ -1,13 +1,13 @@
 {
   "name": "Flexa",
-  "support": "https://support.example.com",
+  "support": "https://discord.gg/XQxPRJ3TGG",
   
   "pterodactyl": {
     "domain": "https://panel.example.com",
     "key": "Your Pterodactyl API key with all permissions"
   },
   "timezone": "Europe/London",
-  "version": "2.0",
+  "version": "1.0",
   "website": {
     "port": 3000,
     "secret": "Default Secret (Change this to any string you want)"
@@ -43,7 +43,7 @@
       },
       "passwordgenerator": {
         "signup": true,
-        "note": "Use this to disable registering on Heliactyl.",
+        "note": "Use this to disable registering on Flexa.",
         "length": 16
       },
       "allow": {
@@ -57,7 +57,7 @@
         "overresourcessuspend": false
       },
       "oauth2": {
-        "_comment": "Go to https://discord.dev/ and create an application to set up OAuth2. This is required for Heliactyl to work. You must also set the redirect URL to the link below.",
+        "_comment": "Go to https://discord.dev/ and create an application to set up OAuth2. This is required for Flexa to work. You must also set the redirect URL to the link below.",
         "id": "Your client ID",
         "secret": "Your client secret",
         "link": "http://localhost:3000",
@@ -86,8 +86,8 @@
         "default": "default",
         "list": {
           "default": {
-            "ram": 1024,
-            "disk": 1024,
+            "ram": 2048,
+            "disk": 5120,
             "cpu": 100,
             "servers": 2
           }
@@ -96,18 +96,14 @@
           "note": "This allows you to set a different plan/package to people who have a specific role however this requires the Discord bot to be configured and functioning. This is mainly used for Boost rewards.",
           "roleServer": "Discord Server ID",
           "roles": {
-            "Discord Role ID": "Heliactyl package name"
+            "Discord Role ID": "Flexa package name"
           }
         }
       },
       "locations": {
         "1": {
           "package": null,
-          "name": "Location 1"
-        },
-        "2": {
-          "package": null,
-          "name": "Location 2"
+          "name": "Default"
         }
       },
       "eggs": {
@@ -116,7 +112,7 @@
           "minimum": {
             "ram": 1024,
             "disk": 1024,
-            "cpu": 100
+            "cpu": 75
           },
           "maximum": {
             "ram": null,
@@ -188,7 +184,6 @@
       }
     },
     "afk": {
-      "_note": "This is the 2nd-generation version of Heliactyl's AFK system. Please report any bugs on the GitHub (github.com/heliactyloss/heliactyl). Thank you.",
       "path": "ws",
       "every": 60,
       "coins": 1,
@@ -196,7 +191,7 @@
     }
   },
   "antivpn": {
-    "note": "For this to work, generate an API Key on https://proxycheck.io/. If you do not put a key, Heliactyl will automatically disable anti-VPN.",
+    "note": "For this to work, generate an API Key on https://proxycheck.io/. If you do not put a key, Flexa will automatically disable anti-VPN.",
     "status": false,
     "APIKey": "Proxycheck API Key",
     "whitelistedIPs": [
@@ -204,14 +199,13 @@
     ]
   },
   "whitelist": {
-    "note": "This allows only specific people to be able to login to the Heliactyl dashboard. This does not affect your Panel.",
+    "note": "This allows only specific people to be able to login to the Flexa dashboard. This does not affect your Panel.",
     "status": false,
     "users": [
       "User ID"
     ]
   },
   "logging": {
-    "_note": "This is the 2nd-generation version of Heliactyl's logging system. Please report any bugs on the GitHub (github.com/heliactyloss/heliactyl). Thank you.",
     "status": false,
     "webhook": "Webhook URL",
     "actions": {
