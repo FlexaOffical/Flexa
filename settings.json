@@ -173,16 +173,16 @@
             "per": 1024
           },
           "disk": {
-            "cost": 200,
-            "per": 5120
+            "cost": 100,
+            "per": 1024
           },
           "cpu": {
-            "cost": 350,
+            "cost": 1000,
             "per": 100
           },
           "servers": {
-            "cost": 100,
-            "per": 2
+            "cost": 250,
+            "per": 1
           }
         }
       }
