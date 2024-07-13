@@ -25,7 +25,7 @@ Ubuntu 22.04 - 20.04 ✅
   - Clone the repo: `git clone https://github.com/FlexaCP/Flexa.git /var/www/flexa`
   - Run `cd /var/www/flexa && npm i`
   - To run Flexa, use `node .`
-  - To Running in background, use `npm install pm2 -g` after that `cd /var/www/flexa && pm2 start node .`
+  - To Running in background, use `npm install pm2 -g` after that `cd /var/www/flexa && pm2 start .`
 
 Windows ✅
 
